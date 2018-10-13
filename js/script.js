@@ -12,12 +12,12 @@
   $('#title').change(function(){
       if( $(this).val() == 'other'){
           $('fieldset').eq(0).append('<input id="other-title" type="text" placeholder="Your Job Role" />').html();
-      }else{
+      }
+      else {
           $('#other-title').remove();
       }
   });
-  //DONE*********************************
-
+  //JOB ROLE DONE*********************************
 
 
 // ***************   T-SHIRT SECTION START *************************
@@ -26,27 +26,74 @@
 //For the T-Shirt "Color" menu, only display the color options that match
 //the design selected in the "Design" menu.
 
-$('#design').change('click', function(){
+function hideOption(number) {
+ $('#colors-js-puns select option').eq(number).hide();
+}
 
-  if($(this).val() == 'js puns') {
-    $('#colors-js-puns select option').eq(3).hide();
-    $('#colors-js-puns select option').eq(4).hide();
-    $('#colors-js-puns select option').eq(5).hide();
-  }
+function showOption(number) {
+ $('#colors-js-puns select option').eq(number).show();
 
-});
+}
 
-
+function displayFirstColor(number) {
+  $('#colors option').eq(number).focus();
+}
 //If the user selects "Theme - JS Puns" then the color menu should only
 //display "Cornflower Blue," "Dark Slate Grey," and "Gold."
+$('#design').change('click', function(){
+    if($(this).val() == 'js puns') {
+      displayFirstColor(0);
+      hideOption(3);
+       hideOption(4);
+       hideOption(5);
+    } else {
+       showOption(3);
+      showOption(4);
+      showOption(5);
+    }
+  });
+  //If the user selects "Theme - I ♥ JS" then the color menu should only
+  //display "Tomato," "Steel Blue," and "Dim Grey."
 
+  $('#design').change('click', function(){
+      if($(this).val() == 'heart js') {
+        displayFirstColor(3)
+        hideOption(0);
+         hideOption(1);
+         hideOption(2);
+      } else {
+         showOption(0);
+        showOption(1);
+        showOption(2);
+      }
+    });
 
+  // $('#design').change('click', function(){
+  //   if($(this).val() == 'js puns') {
+  //     $('#colors-js-puns select option').eq(3).hide();
+  //     $('#colors-js-puns select option').eq(4).hide();
+  //     $('#colors-js-puns select option').eq(5).hide();
+  //   }
+  //   else {
+  //     $('#colors-js-puns select option').eq(3).show();
+  //     $('#colors-js-puns select option').eq(4).show();
+  //     $('#colors-js-puns select option').eq(5).show();
+  //   }
+  // });
+  //
+  // $('#design').change('click', function(){
+  //   if($(this).val() == 'heart js') {
+  //     $('#colors-js-puns select option').eq(0).hide();
+  //     $('#colors-js-puns select option').eq(1).hide();
+  //     $('#colors-js-puns select option').eq(2).hide();
+  //   } else {
+  //     $('#colors-js-puns select option').eq(0).show();
+  //     $('#colors-js-puns select option').eq(1).show();
+  //     $('#colors-js-puns select option').eq(2).show();
+  //   }
+  // });
 
-
-
-//If the user selects "Theme - I ♥ JS" then the color menu should only
-//display "Tomato," "Steel Blue," and "Dim Grey."
-
+///*******  T SHIRT DONE **********************///
 
 
 
