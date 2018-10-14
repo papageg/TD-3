@@ -28,45 +28,73 @@
 
 function hideOption(number) {
  $('#colors-js-puns select option').eq(number).hide();
-}
+};
 
 function showOption(number) {
  $('#colors-js-puns select option').eq(number).show();
 
-}
+};
 
-function displayFirstColor(number) {
-  $('#colors option').eq(number).focus();
-}
+// function displayFirstColor(number) {
+//   $( "#color option:first" ).show();
+// }
 //If the user selects "Theme - JS Puns" then the color menu should only
 //display "Cornflower Blue," "Dark Slate Grey," and "Gold."
-$('#design').change('click', function(){
-    if($(this).val() == 'js puns') {
-      displayFirstColor(0);
+
+
+
+
+  // $('#design').on('click', function(){
+  //     if($(this).val() == 'heart js') {
+  //       // console.log('this')
+  //     });
+
+
+
+  //If the user selects "Theme - I ♥ JS" then the color menu should only
+  //display "Tomato," "Steel Blue," and "Dim Grey."
+  // showOption(0);
+  // showOption(1);
+  // showOption(2);
+  // showOption(3);
+  // showOption(4);
+  // showOption(5);
+
+
+  $('#design').change('click', function(){
+    if($(this).val() == 'js puns')
+    {
+      showOption(0);
+      showOption(1);
+      showOption(2);
       hideOption(3);
        hideOption(4);
        hideOption(5);
-    } else {
-       showOption(3);
-      showOption(4);
-      showOption(5);
-    }
-  });
-  //If the user selects "Theme - I ♥ JS" then the color menu should only
-  //display "Tomato," "Steel Blue," and "Dim Grey."
 
-  $('#design').change('click', function(){
-      if($(this).val() == 'heart js') {
-        displayFirstColor(3)
-        hideOption(0);
-         hideOption(1);
-         hideOption(2);
-      } else {
-         showOption(0);
-        showOption(1);
-        showOption(2);
-      }
+     }
+     else($(this).val() == 'heart js')
+     {
+      // displayFirstColor(3)
+
+      hideOption(0);
+       hideOption(1);
+       hideOption(2);
+       showOption(3);
+       showOption(4);
+       showOption(5);
+
+   }
+   //    showOption(0);
+   //   showOption(0);
+   //   showOption(0);
+   // }else{
+   //
+   //    }
     });
+    // $('#design').change('click', function(){
+    //
+    //
+    //   });
 
   // $('#design').change('click', function(){
   //   if($(this).val() == 'js puns') {
