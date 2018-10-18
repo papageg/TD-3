@@ -87,118 +87,55 @@ $('#color').val('choosecolor')
 //Some events are at the same day and time as others. If the user selects a workshop,
 //don't allow selection of a workshop at the same day and time -- you should disable the
 //checkbox and visually indicate that the workshop in the competing time slot isn't available.
-const oddInput = $('.activities label input:odd').addClass('odd');
-const evenInput = $('.activities label input:even').addClass('even');
+// const oddInput = $('.activities label input:odd').addClass('odd');
+// const evenInput = $('.activities label input:even').addClass('even');
+const all = $('.activities label input').eq(0);
+const jsFrameworks = $('.activities label input').eq(1);
+const jsLibs = $('.activities label input').eq(2);
+const express = $('.activities label input').eq(3);
+const node = $('.activities label input').eq(4);
+const buildTools = $('.activities label input').eq(5);
+const poo = $('.activities label input').eq(6);
 
-  function greyColor(number) {
-    $('.activities label').eq(number).css('color', 'grey');
-  };
-//
-// if ($('oddInput').is(":checked")){
-//   console.log('yes');
-// } else {
-//   console.log('nope');
-// }
-
-function whatsChecked() {
-  $('.activities input[type="checkbox"]').click(function(){
-    if($('.odd').is(':checked'))
-    // $(this).prop("checked")
-    {
-      console.log('1');
-    }
-    else if($('.even').is(':checked'))
-    {
-      console.log('2');
-    }
-  })
-};
-
-
-whatsChecked();
-
-
-// function whatsChecked() {
-//   $('.activities input[type="checkbox"]'). click(function(){
-//     if($(this).prop("checked") == oddInput.is(':checked')){
-//
-//     //  .attr('disabled', 'disabled');
-//     }
-//     else if($(this).prop("checked") == evenInput.is(':checked')){
-//       oddInput.not(':checked');
-//
-//     }
-//   });
-// };
-
-
-
-
-
-
-
-// $('.activities label').change('click', function(){
-//   console.log('hi');
-// });
-
-
-//   $( ".activities label" ).each(function( index )
-//   {
-//   console.log( index + ": " + $( this ).text() );
-// });
-
-//   function greyColor(number) {
-//     $('.activities label').eq(number).css('color', 'grey');
-//   };
-//
-//   function inputClass(){
-//     $(".activities label input:odd").is(":checked").addClass("odd");
-//   };
-//   //$(this).siblings("input[value=none]")
-//   //ticked, pos1,pos2
-//   function inputClass(){
-//     if($(".activities label input:odd").is(":checked") === true) {
-//       $(".activities label input:odd").addClass("greg")
-//       $('.greg').attr('disabled', 'disabled');
-//     }
-//   };
-// inputClass();
-
-
-    //  if ($(".activities label input").is(":checked")) {
-    //   $('.activities label input:odd').attr('disabled', 'disabled');
-    //     $('.activities label input:odd').not(this);
-    // } else {
-    //   $('.activities label input:even').attr('disabled', false);
-    //   $('.activities label input:even').not(this);
-    // }
-
-
-  // $('.activities label input').change('click', function() {
-  //   getLabel(1, 2, 3);
-  //
-  // });
-
-//.eq(pos1)
-//.eq(pos2)
 //add class with style to grey out the ones we dont want to choose since in same time block
-
-
-
-
+$('.activities label').change('click', function(){
+  if ($(jsFrameworks).is(':checked') === true) {
+    $(express).prop('disabled', true);
+    $('.activities label').eq(3).css('color', 'grey');
+} else if ($(jsFrameworks).is(':checked') === false) {
+   $(express).prop('disabled', false);
+   $('.activities label').eq(3).css('color', 'black');
+  }
+////////////////////////////////////////////////////////////////////////////////////////////
+  if ($(jsLibs).is(':checked') === true) {
+    $(node).prop('disabled', true);
+    $('.activities label').eq(4).css('color', 'grey');
+} else if ($(jsLibs).is(':checked') === false) {
+   $(node).prop('disabled', false);
+   $('.activities label').eq(4).css('color', 'black');
+  }
+////////////////////////////////////////////////////////////////////////////////////////////
+    if ($(express).is(':checked') === true) {
+      $(jsFrameworks).prop('disabled', true);
+      $('.activities label').eq(1).css('color', 'grey');
+  } else if ($(express).is(':checked') === false) {
+     $(jsFrameworks).prop('disabled', false);
+     $('.activities label').eq(1).css('color', 'black');
+    }
+////////////////////////////////////////////////////////////////////////////////////////////
+      if ($(node).is(':checked') === true) {
+        $(jsLibs).prop('disabled', true);
+        $('.activities label').eq(2).css('color', 'grey');
+    } else if ($(node).is(':checked') === false) {
+       $(jsLibs).prop('disabled', false);
+       $('.activities label').eq(2).css('color', 'black');
+      }
+});
 
 //When a user unchecks an activity, make sure that competing activities (if there are any) are
 // no longer disabled.
-
-
-
-
-
-
-
-
-
-
 //As a user selects activities, a running total should display below the list of checkboxes.
 //For example, if the user selects "Main Conference", then Total: $200 should appear.
 //If they add 1 workshop, the total should change to Total: $300.
+
+// ***************   Register for Activities SECTION END *************************
