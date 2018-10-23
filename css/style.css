@@ -101,6 +101,13 @@ input[type="radio"] {
 	display: inline-block;
 }
 
+.valid {
+  border: none;
+}
+
+.invalid {
+  border: red;
+}
 button {
 	color: #fff;
 	padding: .55em 1.25em;

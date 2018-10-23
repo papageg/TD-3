@@ -142,87 +142,122 @@ $('.activities label').change('click', function(){
 
 
 // ***************   PAYMENT SECTION START *************************
+//Starts page off only showing credit card payment
+$('#bit-coin').hide();
+$('#pay-pal').hide();
 
 /*"Payment Info" section
 Display payment sections based on the payment option chosen in the select menu.
 */
 
+let paymentChange = $('#payment');
 
-/*
-The "Credit Card" payment option should be selected by default. Display the #credit-card div,
-and hide the "PayPal" and "Bitcoin" information. Payment option in the select menu should match
- the payment option displayed on the page.
-*/
-const creditCard = $('#payment option:nth-child(2)');
-//$('#payment option').eq(1);
-const payPal = $('#payment option:nth-child(3)');
-const bitCoin = $('#payment option:nth-child(4)');
-const paymentTypes = $('payment');
-const cc = $('#credit-card');
-console.log(creditCard);
-$(creditCard).is('click', function(){
-  if($(creditCard) === true){
-    $(cc).hide();
-  } else if(($(creditCard) === false)){
-    $(cc).show();
+$(paymentChange).on('change', function(e){
+  console.log(e.target);
+  let select = $("#payment option:selected").text();
+  console.log(select);
+
+  /*
+  The "Credit Card" payment option should be selected by default. Display the #credit-card div,
+  and hide the "PayPal" and "Bitcoin" information. Payment option in the select menu should match
+   the payment option displayed on the page.
+  */
+  if(select === 'Select Payment Method'){
+  }
+  if(select === 'Credit Card' ){
+    $('#credit-card').show();
+    $('#bit-coin').hide();
+    $('#pay-pal').hide();
+  }
+  else if(select !== 'Credit Card'){
+    $('#credit-card').hide();
+
+  }
+  /*
+  When a user selects the "PayPal" payment option, the PayPal information should display,
+   and the credit card and “Bitcoin” information should be hidden.
+  */
+  if(select === 'PayPal'){
+    $('#pay-pal').show();
+    $('#bit-coin').hide();
+  }
+  /*When a user selects the "Bitcoin" payment option, the Bitcoin information should display,
+  and the credit card and “PayPal” information should be hidden.
+  */
+  if(select === 'Bitcoin'){
+    $('#bit-coin').show();
+    $('#pay-pal').hide();
   }
 });
 
-
-
-//
-// if ($(creditCard).is(':checked') === true) {
-//   $('#credit-card').show();
-// }else if ($(creditCard).is(':checked') === false) {
-//   $('#credit-card').hide();
-//  }
-//
-// ////////////////////////////////////////////////////////////////////////////////////
-//
-// if ($(payPal).is(':checked') === true) {
-//
-// } else if ($(payPal).is(':checked') === false) {
-//
-// }
-//
-// ////////////////////////////////////////////////////////////////////////////////////
-//
-// if ($(bitCoin).is(':checked') === true) {
-//
-// } else if ($(bitCoin).is(':checked') === false) {
-//
-// }
-//
-//
-// /*
-// When a user selects the "PayPal" payment option, the PayPal information should display,
-//  and the credit card and “Bitcoin” information should be hidden.
-// */
-//
-//
-//
-// /*When a user selects the "Bitcoin" payment option, the Bitcoin information should display,
-// and the credit card and “PayPal” information should be hidden.
-// */
-//
-//
-//
 // /*
 // note: The user should not be able to select the "Select Payment Method" option from
 //  the payment select menu, because the user should not be able to submit the form without
 //   a chosen payment option.
 // */
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 //
 // // ***************   PAYMENT SECTION END *************************
+
+$(document).ready(function() {
+    $('button[type="submit"]').click(function(e) {
+        let isValid = true;
+        $('input').each(function() {
+            if ($.trim($(this).val()) == '') {
+                isValid = false;
+                $(this).css({
+                    "border": "1px solid red",
+                    "background": "#FFCECE"
+                });
+            }
+            else {
+                $(this).css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+        if (isValid == false)
+            e.preventDefault();
+        else
+            alert('Thank you for submitting');
+    });
+
+});
+
+// ***************   VALIDATION START *************************
+
+
+//Name field can't be blank.
+
+
+//Email field must be a validly formatted e-mail address (you don't have to check that it's a real e-mail
+// address, just that it's formatted like one: dave@teamtreehouse.com for example.
+
+
+//User must select at least one checkbox under the "Register for Activities" section of the form.
+
+
+
+//If the selected payment option is "Credit Card," make sure the user has supplied a Credit Card number,
+// a Zip Code, and a 3 number CVV value before the form can be submitted.
+
+
+
+//Credit Card field should only accept a number between 13 and 16 digits.
+
+
+
+//The Zip Code field should accept a 5-digit number.
+
+
+
+//The CVV should only accept a number that is exactly 3 digits long.
+
+
+
+
+
+
+
+// ***************   VALIDATION END *************************
