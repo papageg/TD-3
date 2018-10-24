@@ -202,6 +202,8 @@ $(paymentChange).on('change', function(e){
 $(document).ready(function() {
     $('button[type="submit"]').click(function(e) {
         let isValid = true;
+
+
         $('input').each(function() {
             if ($.trim($(this).val()) == '') {
                 isValid = false;
@@ -217,12 +219,63 @@ $(document).ready(function() {
                 });
             }
         });
-        if (isValid == false)
-            e.preventDefault();
-        else
-            alert('Thank you for submitting');
-    });
 
+        //This will give a warning to the name section if it is less than 3 letters long and add text
+            if($('#name').val().length < 3) {
+              $('fieldset label').eq(0).append('<span class="redWarning"> Name is to short</span>');
+              $('.redWarning').css('color', 'red');
+            } else {
+              $('span').remove();
+            }
+        //////////////////////////////////////////////////////////////////////
+        //This will check if the email is correctly typed in with @ and a period.
+              const email = $('#mail').val();
+              const pattern =  /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            if(email !== '') {
+              if (pattern.test(email))
+              {
+                console.log('accepted');
+              }
+              else {
+                $('fieldset label').eq(1).append('<span class="redWarning"> Email is invalid</span>');
+                $('.redWarning').css('color', 'red');
+              }
+            }
+
+
+        //////////////////////////////////////////////////////
+
+        //This is to validate the creditcard secction
+
+        //removing spaces and then dividing the number by one.
+        // If the result was a number, it moved to the next step
+        const creditcardNum = $('#cc-num').val().length;
+        const isNumber = $('.col-6 input');
+        if(creditcardNum !== '')
+
+          if(creditcardNum < 13 || creditcardNum > 16) {
+            $('.col-6 label').append('<span class="redWarning"> Credit Card is invalid</span>');
+            $('.redWarning').css('color', 'red');
+          } else {
+            console.log('accepted');
+          }
+
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////
+            if (isValid == false){
+              e.preventDefault();
+            }
+
+            else {
+              alert('Thank you for submitting');
+            }
+
+
+  });
 });
 
 // ***************   VALIDATION START *************************
