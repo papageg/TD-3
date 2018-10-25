@@ -21,7 +21,7 @@
 
 
 // ***************   T-SHIRT SECTION START *************************
-
+//$('form').submit(function(e) {
 
 //For the T-Shirt "Color" menu, only display the color options that match
 //the design selected in the "Design" menu.
@@ -97,14 +97,30 @@ const node = $('.activities label input').eq(4);
 const buildTools = $('.activities label input').eq(5);
 const poo = $('.activities label input').eq(6);
 
+let totalPrice = 0;
+let totaling = '<label>Total:' + totalPrice + '</label>';
+
+$(".activities").append(totaling);
+
+
+if ($(jsFrameworks).is(":checked")) {
+   totalPrice += 100;
+} else {
+   totalPrice -= 100;
+}
+
 //add class with style to grey out the ones we dont want to choose since in same time block
+
 $('.activities label').change('click', function(){
+
   if ($(jsFrameworks).is(':checked') === true) {
     $(express).prop('disabled', true);
     $('.activities label').eq(3).css('color', 'grey');
+
 } else if ($(jsFrameworks).is(':checked') === false) {
    $(express).prop('disabled', false);
    $('.activities label').eq(3).css('color', 'black');
+
   }
 ////////////////////////////////////////////////////////////////////////////////////////////
   if ($(jsLibs).is(':checked') === true) {
@@ -130,7 +146,9 @@ $('.activities label').change('click', function(){
        $(jsLibs).prop('disabled', false);
        $('.activities label').eq(2).css('color', 'black');
       }
+
 });
+
 
 //When a user unchecks an activity, make sure that competing activities (if there are any) are
 // no longer disabled.
@@ -199,6 +217,9 @@ $(paymentChange).on('change', function(e){
 //
 // // ***************   PAYMENT SECTION END *************************
 
+
+
+// ***************   VALIDATION START *************************
 $(document).ready(function() {
     $('button[type="submit"]').click(function(e) {
         let isValid = true;
@@ -247,23 +268,81 @@ $(document).ready(function() {
 
         //This is to validate the creditcard secction
 
-        //removing spaces and then dividing the number by one.
-        // If the result was a number, it moved to the next step
         const creditcardNum = $('#cc-num').val().length;
-        const isNumber = $('.col-6 input');
-        if(creditcardNum !== '')
+        const userZip = $('#zip').val().length;
+        const userCvv = $('#cvv').val().length;
+       const isNumber = $('.col-6 input');
+       const ccc = $('#cc-num').val()
+        const zzz = $('#zip').val()
+        const vvv = $('#cvv').val()
+       if(creditcardNum !== '') {
 
-          if(creditcardNum < 13 || creditcardNum > 16) {
-            $('.col-6 label').append('<span class="redWarning"> Credit Card is invalid</span>');
-            $('.redWarning').css('color', 'red');
-          } else {
+               if (isNaN(ccc)) {
+                 e.preventDefault();
+                 $('.col-6 label').append('<span class="redWarning"> Numbers Only*  </span>');
+                 $('.redWarning').css('color', 'red');
+               } else {
+                 console.log('accepted');
+               }
+         if(creditcardNum < 13 || creditcardNum > 16) {
+           e.preventDefault();
+           $('.col-6 label').append('<span class="redWarning"> Invalid*</span>');
+           $('.redWarning').css('color', 'red');
+         } else {
+           console.log('accepted');
+         }
+
+
+         /////////////////////
+
+           if ($(".activities input").prop("checked")){
             console.log('accepted');
-          }
+         } else {
+            e.preventDefault();
+            $('.activities legend').append('<span class="redWarning"> Choose One*  </span>');
+            $('.redWarning').css('color', 'red');
+         }
 
 
 
 
 
+         /////////////////////
+
+         if (isNaN(zzz)) {
+           e.preventDefault();
+           $('.col-3 label').eq(0).append('<span class="redWarning"> Numbers Only*  </span>');
+           $('.redWarning').css('color', 'red');
+         } else {
+           console.log('accepted');
+         }
+         if(userZip < 5 || userZip > 5) {
+           e.preventDefault();
+           $('.col-3 label').eq(0).append('<span class="redWarning"> Invalid*</span>');
+           $('.redWarning').css('color', 'red');
+         } else {
+           console.log('accepted');
+         }
+
+         //////////////////////////////
+
+
+                  if (isNaN(vvv)) {
+                    e.preventDefault();
+                    $('.col-3 label').eq(1).append('<span class="redWarning"> Numbers Only*  </span>');
+                    $('.redWarning').css('color', 'red');
+                  } else {
+                    console.log('accepted');
+                  }
+                  if(userCvv < 3 || userCvv > 4) {
+                    e.preventDefault();
+                    $('.col-3 label').eq(1).append('<span class="redWarning"> Invalid*</span>');
+                    $('.redWarning').css('color', 'red');
+                  } else {
+                    console.log('accepted');
+                  }
+
+         ////////////////////////////////
 
         ////////////////////////////////////////////////////////////////
             if (isValid == false){
@@ -273,44 +352,11 @@ $(document).ready(function() {
             else {
               alert('Thank you for submitting');
             }
-
-
-  });
+          };
+        });
 });
 
-// ***************   VALIDATION START *************************
 
 
-//Name field can't be blank.
-
-
-//Email field must be a validly formatted e-mail address (you don't have to check that it's a real e-mail
-// address, just that it's formatted like one: dave@teamtreehouse.com for example.
-
-
-//User must select at least one checkbox under the "Register for Activities" section of the form.
-
-
-
-//If the selected payment option is "Credit Card," make sure the user has supplied a Credit Card number,
-// a Zip Code, and a 3 number CVV value before the form can be submitted.
-
-
-
-//Credit Card field should only accept a number between 13 and 16 digits.
-
-
-
-//The Zip Code field should accept a 5-digit number.
-
-
-
-//The CVV should only accept a number that is exactly 3 digits long.
-
-
-
-
-
-
-
+//});
 // ***************   VALIDATION END *************************
