@@ -95,24 +95,77 @@ const jsLibs = $('.activities label input').eq(2);
 const express = $('.activities label input').eq(3);
 const node = $('.activities label input').eq(4);
 const buildTools = $('.activities label input').eq(5);
-const poo = $('.activities label input').eq(6);
+const npm = $('.activities label input').eq(6);
 
-let totalPrice = 0;
-let totaling = '<label>Total:' + totalPrice + '</label>';
-
+//let costs = 0;
+let totaling = '<span id="totaling">' + 'Total:' + '0' + '</span>';
 $(".activities").append(totaling);
 
 
-if ($(jsFrameworks).is(":checked")) {
-   totalPrice += 100;
-} else {
-   totalPrice -= 100;
+
+
+
+//else if ($(jsFrameworks).is(":checked") === false){
+   //totalPrice = totalPrice - 100;
+//}
+
+// add class with style to grey out the ones we dont want to choose since in same time block
+
+
+
+
+///////////////////////////////
+$('.activities label').on('click', function(){
+///////////////////////////////////
+
+if ($(all).is(':checked') === true) {
+  costA = 200;
+} else if ($(all).is(':checked') === false) {
+  costA = 0;
+
 }
 
-//add class with style to grey out the ones we dont want to choose since in same time block
 
-$('.activities label').change('click', function(){
+if ($(jsFrameworks).is(":checked") === true) {
+     costB = 100;
+} else if ($(jsFrameworks).is(":checked") === false) {
+      costB = 0;
+}
 
+
+if ($(jsLibs).is(':checked') === true) {
+  costC = 100;
+} else if ($(jsLibs).is(':checked') === false) {
+  costC = 0;
+}
+
+if ($(express).is(':checked') === true) {
+  costD = 100;
+} else if ($(express).is(':checked') === false) {
+  costD = 0;
+}
+
+if ($(node).is(':checked') === true) {
+  costE = 100;
+} else if ($(node).is(':checked') === false) {
+  costE = 0;
+}
+
+if ($(buildTools).is(':checked') === true) {
+  costF = 100;
+} else if ($(buildTools).is(':checked') === false) {
+  costF = 0;
+}
+
+if ($(npm).is(':checked') === true) {
+  costG = 100;
+} else if ($(npm).is(':checked') === false) {
+  costG = 0;
+}
+
+
+
+//////////////////////////////////
   if ($(jsFrameworks).is(':checked') === true) {
     $(express).prop('disabled', true);
     $('.activities label').eq(3).css('color', 'grey');
@@ -126,28 +179,38 @@ $('.activities label').change('click', function(){
   if ($(jsLibs).is(':checked') === true) {
     $(node).prop('disabled', true);
     $('.activities label').eq(4).css('color', 'grey');
+
 } else if ($(jsLibs).is(':checked') === false) {
    $(node).prop('disabled', false);
    $('.activities label').eq(4).css('color', 'black');
+
   }
 ////////////////////////////////////////////////////////////////////////////////////////////
     if ($(express).is(':checked') === true) {
       $(jsFrameworks).prop('disabled', true);
       $('.activities label').eq(1).css('color', 'grey');
+
   } else if ($(express).is(':checked') === false) {
      $(jsFrameworks).prop('disabled', false);
      $('.activities label').eq(1).css('color', 'black');
+
     }
 ////////////////////////////////////////////////////////////////////////////////////////////
       if ($(node).is(':checked') === true) {
         $(jsLibs).prop('disabled', true);
         $('.activities label').eq(2).css('color', 'grey');
+
     } else if ($(node).is(':checked') === false) {
        $(jsLibs).prop('disabled', false);
        $('.activities label').eq(2).css('color', 'black');
+
       }
+      totaling = costA + costB + costC + costD + costE + costF + costG;
+
+      document.getElementById('totaling').innerHTML ="Total: " + totaling;
 
 });
+
 
 
 //When a user unchecks an activity, make sure that competing activities (if there are any) are
