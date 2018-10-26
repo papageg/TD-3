@@ -283,6 +283,13 @@ $(paymentChange).on('change', function(e){
     $('#bit-coin').show();
     $('#pay-pal').hide();
   }
+
+  if(select === 'Select Payment Method'){
+    $('#credit-card').hide();
+    $('#bit-coin').hide();
+    $('#pay-pal').hide();
+  }
+
 });
 
 // /*
@@ -342,7 +349,7 @@ $(document).ready(function() {
 
 
         //////////////////////////////////////////////////////
-
+if ($('#payment option[value="credit card "]') === true){
         //This is to validate the creditcard secction
         const creditcardNum = $('#cc-num').val().length;
         const userZip = $('#zip').val().length;
@@ -351,6 +358,7 @@ $(document).ready(function() {
        const ccc = $('#cc-num').val()
         const zzz = $('#zip').val()
         const vvv = $('#cvv').val()
+
 
 
        if(creditcardNum !== '') {
@@ -421,16 +429,19 @@ $(document).ready(function() {
                   }
 
          ////////////////////////////////
+}
+         if (isValid == false){
+           e.preventDefault();
+         }
 
+         else {
+           alert('Thank you for submitting');
+
+         }
         ////////////////////////////////////////////////////////////////
-            if (isValid == false){
-              e.preventDefault();
-            }
 
-            else {
-              alert('Thank you for submitting');
-            }
-          };
+      };
+
 
         });
 });
