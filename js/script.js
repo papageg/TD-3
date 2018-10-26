@@ -26,6 +26,19 @@
 //For the T-Shirt "Color" menu, only display the color options that match
 //the design selected in the "Design" menu.
 
+
+$(function() {
+      $('#color').hide();
+    $('#design').change(function(){
+        if($('#design option').val() === 'js puns') {
+            $('#color').hide();
+        } else {
+            $('#color').show();
+        }
+    });
+});
+
+
 function hideOption(number) {
  $('#colors-js-puns select option').eq(number).hide();
 };
@@ -40,6 +53,7 @@ function showOption(number) {
 $('#color').append('<option value="choosecolor">Choose Color</option>');
 $('#color').val('choosecolor')
   $('#design').change('click', function(){
+
     if($(this).val() === 'js puns')
     {
       $('#color').val('cornflowerblue')
@@ -110,7 +124,6 @@ $(".activities").append(totaling);
 //}
 
 // add class with style to grey out the ones we dont want to choose since in same time block
-
 
 
 
