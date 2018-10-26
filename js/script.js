@@ -239,25 +239,26 @@ if ($(npm).is(':checked') === true) {
 //Starts page off only showing credit card payment
 $('#bit-coin').hide();
 $('#pay-pal').hide();
+$('#payment option[value="select_method"]').remove();
 
 /*"Payment Info" section
 Display payment sections based on the payment option chosen in the select menu.
 */
 
 let paymentChange = $('#payment');
-$('')
+//$('')
 $(paymentChange).on('change', function(e){
   console.log(e.target);
   let select = $("#payment option:selected").text();
   console.log(select);
-$('#payment option').eq(0).hide();
+//$('#payment option').eq(0).hide();
   /*
   The "Credit Card" payment option should be selected by default. Display the #credit-card div,
   and hide the "PayPal" and "Bitcoin" information. Payment option in the select menu should match
    the payment option displayed on the page.
   */
-  if(select === 'Select Payment Method'){
-  }
+//  if(select === 'Select Payment Method'){
+//}
   if(select === 'Credit Card' ){
     $('#credit-card').show();
     $('#bit-coin').hide();
@@ -343,7 +344,6 @@ $(document).ready(function() {
         //////////////////////////////////////////////////////
 
         //This is to validate the creditcard secction
-
         const creditcardNum = $('#cc-num').val().length;
         const userZip = $('#zip').val().length;
         const userCvv = $('#cvv').val().length;
@@ -351,6 +351,8 @@ $(document).ready(function() {
        const ccc = $('#cc-num').val()
         const zzz = $('#zip').val()
         const vvv = $('#cvv').val()
+
+
        if(creditcardNum !== '') {
 
                if (isNaN(ccc)) {
@@ -429,6 +431,7 @@ $(document).ready(function() {
               alert('Thank you for submitting');
             }
           };
+
         });
 });
 
