@@ -245,12 +245,12 @@ Display payment sections based on the payment option chosen in the select menu.
 */
 
 let paymentChange = $('#payment');
-
+$('')
 $(paymentChange).on('change', function(e){
   console.log(e.target);
   let select = $("#payment option:selected").text();
   console.log(select);
-
+$('#payment option').eq(0).hide();
   /*
   The "Credit Card" payment option should be selected by default. Display the #credit-card div,
   and hide the "PayPal" and "Bitcoin" information. Payment option in the select menu should match
