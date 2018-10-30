@@ -275,6 +275,7 @@ $(document).ready(function() {
 		}
 		//////////////////////////////////////////////////////
 		//This is to validate the creditcard secction
+		if ($('#payment option:selected').val() === 'credit card') {
     const creditcardNum = $('#cc-num').val().length;
     const userZip = $('#zip').val().length;
     const userCvv = $('#cvv').val().length;
@@ -329,7 +330,7 @@ $(document).ready(function() {
 				console.log('accepted');
 			}
 		};
-
+};
 
 		////////////////////////////////
 		if ($(".activities input").prop("checked")) {
