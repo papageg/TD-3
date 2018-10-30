@@ -349,7 +349,11 @@ $(document).ready(function() {
 
 
         //////////////////////////////////////////////////////
-if ($('#payment option[value="credit card "]') === true){
+
+
+
+          if ($("#payment option").eq(1).is(":checked") === false){
+
         //This is to validate the creditcard secction
         const creditcardNum = $('#cc-num').val().length;
         const userZip = $('#zip').val().length;
@@ -362,6 +366,7 @@ if ($('#payment option[value="credit card "]') === true){
 
 
        if(creditcardNum !== '') {
+
 
                if (isNaN(ccc)) {
                  e.preventDefault();
@@ -427,7 +432,7 @@ if ($('#payment option[value="credit card "]') === true){
                   } else {
                     console.log('accepted');
                   }
-
+};
          ////////////////////////////////
 }
          if (isValid == false){
@@ -440,7 +445,7 @@ if ($('#payment option[value="credit card "]') === true){
          }
         ////////////////////////////////////////////////////////////////
 
-      };
+
 
 
         });
