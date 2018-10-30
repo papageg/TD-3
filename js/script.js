@@ -317,6 +317,7 @@ $(document).ready(function() {
                     "background": "#FFCECE"
                 });
             }
+
             else {
                 $(this).css({
                     "border": "",
@@ -352,7 +353,7 @@ $(document).ready(function() {
 
 
 
-          if ($("#payment option").eq(1).is(":checked") === false){
+          if ($("#payment option").eq(1) === (":checked")){
 
         //This is to validate the creditcard secction
         const creditcardNum = $('#cc-num').val().length;
@@ -386,19 +387,6 @@ $(document).ready(function() {
 
          /////////////////////
 
-           if ($(".activities input").prop("checked")){
-            console.log('accepted');
-         } else {
-            e.preventDefault();
-            $('.activities legend').append('<span class="redWarning"> Choose One*  </span>');
-            $('.redWarning').css('color', 'red');
-         }
-
-
-
-
-
-         /////////////////////
 
          if (isNaN(zzz)) {
            e.preventDefault();
@@ -432,9 +420,25 @@ $(document).ready(function() {
                   } else {
                     console.log('accepted');
                   }
-};
-         ////////////////////////////////
 }
+         ////////////////////////////////
+};
+
+
+                    if ($(".activities input").prop("checked")){
+                     console.log('accepted');
+                  } else {
+                     e.preventDefault();
+                     $('.activities legend').append('<span class="redWarning"> Choose One*  </span>');
+                     $('.redWarning').css('color', 'red');
+                  }
+
+
+
+
+
+                  /////////////////////
+
          if (isValid == false){
            e.preventDefault();
          }
